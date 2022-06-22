@@ -14,6 +14,8 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
 
 class Blog extends Model { }
 
+Blog.sync();
+
 Blog.init({
   id: {
     type: DataTypes.INTEGER,
