@@ -44,11 +44,33 @@ Blog.init({
 
 app.get('/api/blogs', async (req, res) => {
   const blogs = await Blog.findAll();
-  blogs.forEach(({ author, title, likes }) => {
-    console.log(`${author}: '${title}', ${likes} likes`);
-  });
+  console.log(JSON.stringify(blogs, null, 2));
   res.json(blogs);
-})
+});
+
+app.post('/api/blogs', async (req, res) => {
+  try {
+    const blog = await Blog.create(req.body);
+    console.log(blog.toJSON());
+    return res.json(blog);
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
+
+app.delete('/api/blogs/:id', async (req, res) => {
+  try {
+    const deletedBlog = await Blog.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    console.log(deletedBlog.toJSON());
+    return res.json(deletedBlog);
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
