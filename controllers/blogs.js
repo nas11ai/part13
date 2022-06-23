@@ -2,13 +2,13 @@ const router = require('express').Router();
 
 const { Blog } = require('../models');
 
-router.get('/api/blogs', async (req, res) => {
+router.get('/', async (req, res) => {
   const blogs = await Blog.findAll();
   console.log(JSON.stringify(blogs, null, 2));
   res.json(blogs);
 });
 
-router.post('/api/blogs', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const blog = await Blog.create(req.body);
     console.log(blog.toJSON());
@@ -18,7 +18,7 @@ router.post('/api/blogs', async (req, res) => {
   }
 });
 
-router.delete('/api/blogs/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const deletedBlog = await Blog.destroy({
       where: {

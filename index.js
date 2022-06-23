@@ -3,11 +3,11 @@ const app = express();
 
 const { PORT } = require('./utils/config');
 const { connectToDatabase } = require('./utils/db');
-const notesRouter = require('./controllers/blogs');
+const blogsRouter = require('./controllers/blogs');
 
 app.use(express.json());
 
-app.use('/api/blogs', notesRouter);
+app.use('/api/blogs', blogsRouter);
 
 const main = async () => {
   await connectToDatabase;
