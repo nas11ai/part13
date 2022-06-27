@@ -29,3 +29,12 @@ Content-Type: application/json
 {
   "username": "superadmin"
 }
+
+##############################################################
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "password"
+}
