@@ -1,0 +1,9 @@
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOjEsImlhdCI6MTY1NjMxNjg2M30.0zdnwTXJLQrcNBnFib9ky4S6OqFxQmgO-kOybbHTlcw
+
+{
+  "title": "How to Debug Node.js HTTP Requests",
+  "author": "Harry Winer",
+  "url": "https://winer-harry.medium.com/how-to-debug-node-js-http-requests-c4be61220da8"
+}
