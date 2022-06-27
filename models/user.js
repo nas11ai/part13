@@ -12,16 +12,34 @@ User.init({
   },
   username: {
     type: DataTypes.STRING,
-    unique: true,
+    unique: {
+      args: true,
+      msg: 'Username has been taken',
+    },
     allowNull: false,
+    validate: {
+      notNull: {
+        msg: 'Please enter your username',
+      },
+    },
   },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
+    validate: {
+      notNull: {
+        msg: 'Please enter your name',
+      },
+    },
   },
   passwordHash: {
     type: DataTypes.STRING,
     allowNull: false,
+    validate: {
+      notNull: {
+        msg: 'Please enter your password',
+      },
+    },
   },
 }, {
   sequelize,

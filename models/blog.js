@@ -13,6 +13,11 @@ Blog.init({
   title: {
     type: DataTypes.STRING,
     allowNull: false,
+    validate: {
+      notNull: {
+        msg: 'Please enter blog\'s title',
+      },
+    },
   },
   author: {
     type: DataTypes.STRING,
@@ -20,6 +25,11 @@ Blog.init({
   url: {
     type: DataTypes.STRING,
     allowNull: false,
+    validate: {
+      notNull: {
+        msg: 'Please enter blog\'s url',
+      },
+    },
   },
   likes: {
     type: DataTypes.INTEGER,
