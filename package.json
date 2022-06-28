@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "migration:down": "node util/rollback.js",
+    "db-info": "heroku config -a evening-island-42890",
+    "launch-db": " heroku run psql -h ec2-52-22-136-117.compute-1.amazonaws.com -p 5432 -U ockfmwiboxiduq d6tec88h5436l7 -a evening-island-42890"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +21,8 @@
     "jsonwebtoken": "^8.5.1",
     "node-fetch": "^3.2.6",
     "pg": "^8.7.3",
-    "sequelize": "^6.21.0"
+    "sequelize": "^6.21.0",
+    "umzug": "^3.1.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.18",

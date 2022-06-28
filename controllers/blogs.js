@@ -1,31 +1,8 @@
 const router = require('express').Router();
-const jwt = require('jsonwebtoken');
 const { Op } = require('sequelize');
 
 const { Blog, User } = require('../models');
-const { SECRET } = require('../utils/config');
-
-const blogFinder = async (req, res, next) => {
-  req.blog = await Blog.findByPk(req.params.id);
-  return next();
-}
-
-const tokenExtractor = (req, res, next) => {
-  const auth = req.get('authorization');
-  if (auth && auth.toLowerCase().startsWith('bearer ')) {
-    try {
-      console.log(auth.substring(7))
-      req.decodedToken = jwt.verify(auth.substring(7), SECRET);
-    } catch (err) {
-      console.log(err);
-      return res.status(401).json({ error: 'Token invalid' });
-    }
-  } else {
-    return res.status(401).json({ error: 'token missing' });
-  }
-
-  next();
-}
+const { tokenExtractor, blogFinder } = require('../utils/middleware');
 
 router.get('/', async (req, res) => {
   let where = {};
